@@ -37,12 +37,18 @@
   width: min(1180px, calc(100% - clamp(36px, 8vw, 112px)));
 }
 
+:root {
+  --site-header-height: 84px;
+}
+
 .site-header {
-  height: 84px;
+  height: var(--site-header-height);
   width: min(1180px, calc(100% - clamp(36px, 8vw, 112px)));
 }
 
 .hero {
+  min-height: calc(100vh - var(--site-header-height));
+  min-height: calc(100svh - var(--site-header-height));
   grid-template-columns: 1.04fr 1fr;
   gap: clamp(30px, 5vw, 76px);
   padding-block: clamp(60px, 8vw, 116px);
