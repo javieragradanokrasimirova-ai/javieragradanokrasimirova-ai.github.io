@@ -105,7 +105,7 @@
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -113,7 +113,6 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  grid-column: span 2;
   min-width: 0;
   gap: 0;
   padding: 0;
@@ -123,7 +122,18 @@
   background: #fbfbf6;
 }
 
-.project-grid .project:nth-child(4) { grid-column: 2 / span 2; }
+@media (min-width: 851px) {
+  .project-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .project-grid .project { grid-column: span 4; }
+  .project-grid .project-magical-athlete { grid-column: span 5; }
+  .project-grid .project-pawket { grid-column: span 4; }
+  .project-grid .project-aula { grid-column: span 3; }
+  .project-grid .project-pomodoro-infusion { grid-column: 3 / span 4; }
+  .project-grid .project-tycgis { grid-column: span 5; }
+}
 
 .project-media {
   display: grid;
@@ -149,7 +159,7 @@
 }
 
 .race-cards img {
-  width: 32%;
+  width: min(30%, 120px);
   height: 90%;
   object-fit: cover;
   border: 3px solid #fbf6e9;
@@ -160,6 +170,23 @@
 .race-cards img:first-child { transform: translateX(12%) rotate(-13deg); }
 .race-cards img:nth-child(2) { transform: translateY(-5%) scale(1.08); z-index: 1; }
 .race-cards img:last-child { transform: translateX(-12%) rotate(13deg); }
+
+
+@media (min-width: 511px) and (prefers-reduced-motion: no-preference) {
+  .race-cards img { transition: transform .28s ease; }
+
+  .project-magical-athlete:is(:hover, :focus-within) .race-cards img:first-child {
+    transform: translate(-1%, 5%) rotate(-19deg);
+  }
+
+  .project-magical-athlete:is(:hover, :focus-within) .race-cards img:nth-child(2) {
+    transform: translateY(-10%) scale(1.1);
+  }
+
+  .project-magical-athlete:is(:hover, :focus-within) .race-cards img:last-child {
+    transform: translate(1%, 5%) rotate(19deg);
+  }
+}
 
 .pawket-cover {
   background:
@@ -179,18 +206,21 @@
   box-shadow: 0 0 0 6px #fff4d57a;
 }
 
+.pawket-cover::before { transform: translateY(8%); }
+
 .pawket-cover img {
   position: absolute;
   width: auto;
-  height: 75%;
+  height: 84%;
+  transform: translateY(-4%) rotate(-6deg);
   filter: drop-shadow(3px 5px 0 #7846383a);
 }
 
 .aula-cover {
-  background:
-    linear-gradient(90deg, #49695212 1px, transparent 1px) 0 0 / 22px 22px,
-    linear-gradient(#49695212 1px, transparent 1px) 0 0 / 22px 22px,
-    #e4eee3;
+  background-color: #e3eee1;
+  background-image:
+    radial-gradient(ellipse at 50% 30%, #f5f9edbb, transparent 76%),
+    url("assets/aula-paper.svg");
 }
 
 .aula-lockup {
@@ -212,22 +242,24 @@
 
 .tomato-cover {
   background:
-    repeating-linear-gradient(135deg, #5e342f16 0 1px, transparent 1px 7px),
-    #f2dabc;
+    radial-gradient(ellipse at center, #733d456e, transparent 68%),
+    repeating-linear-gradient(135deg, #e8a98112 0 1px, transparent 1px 6px),
+    #251c1d;
 }
 
 .tomato-cover::before {
-  height: 80%;
-  background: #f8e7c8;
-  border-color: #90705280;
-  box-shadow: 0 0 0 5px #f8e7c890;
+  height: 79%;
+  background: #492c2d;
+  border: 1px dashed #e8af778c;
+  box-shadow: 0 0 0 4px #ad754a28;
 }
 
 .tomato-cover img {
   position: absolute;
   width: auto;
-  height: 72%;
+  height: 77%;
   transform: rotate(-9deg);
+  filter: drop-shadow(0 4px 8px #16090a94);
 }
 
 .gis-cover svg { width: 100%; height: 100%; }
@@ -298,9 +330,6 @@
 
 @media (max-width: 850px) {
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-
-  .project-grid .project,
-  .project-grid .project:nth-child(4) { grid-column: auto; }
 }
 
 @media (max-width: 510px) {
