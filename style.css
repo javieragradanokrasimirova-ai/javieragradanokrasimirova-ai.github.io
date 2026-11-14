@@ -402,35 +402,6 @@ button.project-media {
 
 button.project-media:focus-visible { outline-offset: -5px; }
 
-.sound-icon, .bark-label {
-  position: absolute;
-  right: 12px;
-  background: #fff7de;
-  color: #513124;
-  border: 1px solid #a96f4d80;
-  font-weight: 700;
-}
-
-.sound-icon {
-  display: grid;
-  place-items: center;
-  bottom: 10px;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  font-size: 15px;
-}
-
-.bark-label {
-  top: 12px;
-  opacity: 0;
-  padding: 3px 8px;
-  border-radius: 10px;
-  font-size: 12px;
-}
-
-.pawket-cover.is-barking .bark-label { opacity: 1; }
-
 .aula-book { position: relative; flex: none; }
 .aula-book svg {
   position: absolute;
@@ -457,7 +428,7 @@ button.project-media:focus-visible { outline-offset: -5px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .pawket-cover.is-barking img { animation: chef-bark .35s ease both; }
+  .project-pawket:is(:hover, :focus-within) .pawket-cover img { animation: chef-greeting .35s ease both; }
   .project-aula:is(:hover, :focus-within) .aula-book svg path {
     animation: gallery-pages .72s steps(6) both;
   }
@@ -472,7 +443,7 @@ button.project-media:focus-visible { outline-offset: -5px; }
     animation: gallery-route 1.35s ease-in-out both;
   }
 
-  @keyframes chef-bark {
+  @keyframes chef-greeting {
     28% { transform: translateY(-13%) rotate(-10deg) scale(1.035); }
     62% { transform: translateY(0) rotate(-3deg); }
   }
@@ -505,5 +476,4 @@ button.project-media:focus-visible { outline-offset: -5px; }
 
 @media (max-width: 510px) {
   button.project-media { border-right: 1px solid #20292714; border-bottom: 0; }
-  .sound-icon, .bark-label { right: 7px; }
 }

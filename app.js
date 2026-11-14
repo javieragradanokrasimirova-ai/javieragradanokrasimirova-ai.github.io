@@ -84,20 +84,6 @@ gallery.addEventListener('pointermove', event => {
   galleryGlow.style.setProperty('--glow-y', (event.clientY - bounds.top) + 'px');
 }, {passive: true});
 
-const logui = gallery.querySelector('.pawket-cover');
-const bark = new Audio('assets/logui-ladrido.ogg');
-bark.preload = 'none';
-bark.volume = .55;
-let barkTimer;
-logui.addEventListener('click', () => {
-  clearTimeout(barkTimer);
-  logui.classList.remove('is-barking');
-  requestAnimationFrame(() => logui.classList.add('is-barking'));
-  bark.currentTime = 0;
-  bark.play().catch(() => {});
-  barkTimer = setTimeout(() => logui.classList.remove('is-barking'), 820);
-});
-
 const tomato = gallery.querySelector('.tomato-cover');
 const frontWave = tomato.querySelector('.tomato-wave-front');
 const backWave = tomato.querySelector('.tomato-wave-back');
