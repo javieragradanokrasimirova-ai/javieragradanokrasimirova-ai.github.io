@@ -38,3 +38,4 @@
 .mini-project .project-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:auto}
 .site-header .identity>span:last-child{white-space:nowrap}
 @media(max-width:850px){.mini-projects{grid-template-columns:1fr}.mini-project{padding:26px 22px}}
+.rearma{background:linear-gradient(90deg,#e24a0b 0,#e24a0b 22%,#17171a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
