@@ -140,9 +140,4 @@ tomato.addEventListener('pointerleave', () => {
   hovering = false;
   updateTomato();
 });
-tomato.addEventListener('click', () => {
-  pinned = !pinned;
-  tomato.setAttribute('aria-pressed', String(pinned));
-  updateTomato();
-});
 reducedMotion.addEventListener('change', updateTomato);

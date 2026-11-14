@@ -128,6 +128,8 @@
   .project-grid .project-pomodoro-infusion { grid-column: 2 / span 2; }
 }
 
+a.project-media { color: inherit; text-decoration: none; cursor: pointer; }
+a.project-media:focus-visible { outline: 3px solid #b6f23c; outline-offset: -5px; }
 .project-media {
   display: grid;
   place-items: center;
@@ -393,7 +395,7 @@
   mask-image: linear-gradient(#000 64%, transparent);
 }
 
-button.project-media {
+a.project-media.tomato-cover, button.project-media {
   width: 100%;
   padding: 0;
   border: 0;
@@ -475,7 +477,7 @@ button.project-media:focus-visible { outline-offset: -5px; }
 }
 
 @media (max-width: 510px) {
-  button.project-media { border-right: 1px solid #20292714; border-bottom: 0; }
+  a.project-media.tomato-cover, button.project-media { border-right: 1px solid #20292714; border-bottom: 0; }
 }
 
 .contact-socials {
