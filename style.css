@@ -39,3 +39,313 @@
 .site-header .identity>span:last-child{white-space:nowrap}
 @media(max-width:850px){.mini-projects{grid-template-columns:1fr}.mini-project{padding:26px 22px}}
 .rearma{background:linear-gradient(90deg,#e24a0b 0,#e24a0b 22%,#17171a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+/* Keep the original charcoal, paper and lime palette across the project gallery. */
+.wrap {
+  width: min(1180px, calc(100% - clamp(36px, 8vw, 112px)));
+}
+
+.site-header {
+  height: 84px;
+  width: min(1180px, calc(100% - clamp(36px, 8vw, 112px)));
+}
+
+.hero {
+  grid-template-columns: 1.04fr 1fr;
+  gap: clamp(30px, 5vw, 76px);
+  padding-block: clamp(60px, 8vw, 116px);
+}
+
+.hero h1 {
+  font-size: clamp(54px, 7vw, 108px);
+  line-height: .99;
+  letter-spacing: -.075em;
+}
+
+.hero-description {
+  max-width: 39ch;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.65;
+}
+
+.hero-actions {
+  gap: 10px 22px;
+}
+
+.hero-github {
+  color: var(--lime);
+}
+
+.projects {
+  padding-block: clamp(54px, 8vw, 100px);
+}
+
+.projects .section-heading {
+  align-items: end;
+  margin-bottom: 32px;
+}
+
+.projects h2 {
+  font-size: clamp(38px, 5vw, 67px);
+  letter-spacing: -.055em;
+}
+
+.projects .section-heading > p {
+  max-width: 31ch;
+  font-size: 15px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.project-grid .project {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fbfbf6;
+}
+
+.project-grid .featured-project {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+}
+
+.project-media,
+.project-grid .map-visual {
+  display: grid;
+  place-items: center;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 0;
+  background: var(--visual-background, #e2e8d8);
+}
+
+.project-media img {
+  width: 84%;
+  height: auto;
+  max-height: 86%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 8px;
+  box-shadow: 0 16px 32px #20292724;
+}
+
+.featured-project .project-media {
+  aspect-ratio: auto;
+  background: radial-gradient(ellipse at 28% 10%, #eef1d9, #ced9bd);
+  padding: 26px;
+}
+
+.featured-project .project-media img {
+  width: auto;
+  max-width: 100%;
+  max-height: 440px;
+}
+
+.project-pawket { --visual-background: #ead1a6; }
+.project-aula { --visual-background: #d9e7e1; }
+.project-pomodoro-infusion { --visual-background: #eedcc0; }
+
+.project-pawket .project-media img {
+  width: auto;
+  height: 91%;
+  align-self: end;
+  max-height: none;
+  border-radius: 12px 12px 0 0;
+}
+
+.project-aula .project-media img,
+.project-pomodoro-infusion .project-media img {
+  width: 79%;
+  height: auto;
+}
+
+.project-grid .project-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: clamp(21px, 3vw, 38px);
+}
+
+.project-grid .project-type {
+  margin: 0 0 9px;
+  color: #506044;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.project-grid h3 {
+  font-size: clamp(28px, 3.4vw, 48px);
+  margin-bottom: 13px;
+  letter-spacing: -.045em;
+}
+
+.project-grid .project-copy > p:not(.project-type) {
+  font-size: 15px;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+.project-grid .project-copy > .project-technical {
+  color: #394638;
+}
+
+.project-grid .tags {
+  list-style: none;
+  margin: 4px 0 16px;
+  padding: 0;
+}
+
+.project-grid .tags li {
+  border: 1px solid #ccd5c4;
+  border-radius: 5px;
+  padding: 3px 9px;
+  color: #45533c;
+  font-size: 12px;
+}
+
+.project-grid .project-copy > .project-disclosure,
+.project-grid .project-copy > .project-credit {
+  font-size: 12px !important;
+  color: #50594d;
+  line-height: 1.6;
+}
+
+.project-grid .project-links {
+  margin-top: auto;
+  padding-top: 9px;
+  gap: 8px 18px;
+}
+
+.project-grid .project-links .text-link,
+.project-grid .project-links .button {
+  font-size: 13px;
+}
+
+.project-grid .project-status {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 650;
+  color: #45533c;
+}
+
+.project-grid .map-card {
+  top: 22%;
+  left: 8%;
+  right: auto;
+}
+
+.project-grid .map-disclaimer {
+  left: 8%;
+  bottom: 12px;
+  font-size: 12px;
+}
+
+.rearm-diagram {
+  color: #ddedcc;
+  background:
+    linear-gradient(#c6ebbb15 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, #c6ebbb15 1px, transparent 1px) 0 0 / 24px 24px,
+    #253a33;
+}
+
+.hardware-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  position: relative;
+  width: min(66%, 280px);
+  height: 65%;
+}
+
+.hardware-board i {
+  border: 1px solid #b9d6a47a;
+  border-radius: 8px;
+  background: repeating-linear-gradient(90deg, #bedc9b1f 0 2px, transparent 2px 7px);
+}
+
+.hardware-board span {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: var(--lime);
+  color: var(--night);
+  box-shadow: 0 5px 22px #12241c99;
+}
+
+.hardware-board svg {
+  width: 36px;
+  height: 36px;
+}
+
+.concept-caption {
+  position: absolute;
+  inset: auto 8% 10px;
+  font-size: 12px;
+}
+
+@media (max-width: 850px) {
+  .hero h1 { font-size: clamp(49px, 8vw, 68px); }
+  .project-grid { gap: 16px; }
+}
+
+@media (max-width: 650px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding-block: 54px 30px;
+  }
+
+  .hero h1 { font-size: clamp(50px, 12vw, 69px); }
+  .hero-art { height: 310px; }
+  .projects .section-heading { align-items: start; gap: 12px; }
+
+  .project-grid,
+  .project-grid .featured-project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .featured-project .project-media {
+    aspect-ratio: 5 / 4;
+    padding: 16px;
+  }
+
+  .featured-project .project-media img { max-height: 100%; }
+}
+
+
+.project-pawket .project-media img {
+  position: absolute;
+  bottom: 0;
+  max-width: 88%;
+  object-fit: contain;
+}
+
+@media (min-width: 651px) {
+  .project-grid .project-tycgis {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .project-grid .project-tycgis .map-visual { aspect-ratio: auto; }
+}
