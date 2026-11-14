@@ -477,3 +477,11 @@ button.project-media:focus-visible { outline-offset: -5px; }
 @media (max-width: 510px) {
   button.project-media { border-right: 1px solid #20292714; border-bottom: 0; }
 }
+
+.contact-socials {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+}
+
+.contact-socials .linkedin-link { gap: 8px; }
