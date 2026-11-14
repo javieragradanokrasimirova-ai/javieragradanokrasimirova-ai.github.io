@@ -72,3 +72,91 @@ if(!reducedMotion.matches){
   });
 }
 syncMotion();
+
+const gallery = document.querySelector('.projects');
+const galleryGlow = document.createElement('div');
+galleryGlow.className = 'gallery-glow';
+gallery.parentElement.prepend(galleryGlow);
+gallery.addEventListener('pointermove', event => {
+  if (reducedMotion.matches || event.pointerType === 'touch') return;
+  const bounds = galleryGlow.getBoundingClientRect();
+  galleryGlow.style.setProperty('--glow-x', (event.clientX - bounds.left) + 'px');
+  galleryGlow.style.setProperty('--glow-y', (event.clientY - bounds.top) + 'px');
+}, {passive: true});
+
+const logui = gallery.querySelector('.pawket-cover');
+const bark = new Audio('assets/logui-ladrido.ogg');
+bark.preload = 'none';
+bark.volume = .55;
+let barkTimer;
+logui.addEventListener('click', () => {
+  clearTimeout(barkTimer);
+  logui.classList.remove('is-barking');
+  requestAnimationFrame(() => logui.classList.add('is-barking'));
+  bark.currentTime = 0;
+  bark.play().catch(() => {});
+  barkTimer = setTimeout(() => logui.classList.remove('is-barking'), 820);
+});
+
+const tomato = gallery.querySelector('.tomato-cover');
+const frontWave = tomato.querySelector('.tomato-wave-front');
+const backWave = tomato.querySelector('.tomato-wave-back');
+let level = 0;
+let pinned = false;
+let hovering = false;
+let waveFrame;
+
+// Match Pomodoro Infusion's two sine waves, compressed into a short preview.
+function drawTomato(level, phase) {
+  const amplitude = 6 * Math.min(1, level * 8, (1 - level) * 8);
+  const baseline = 372 - level * 272;
+  let front = '';
+  let back = '';
+  for (let x = 50; x <= 392; x += 6) {
+    const command = x === 50 ? 'M' : 'L';
+    front += command + x + ',' + (baseline + amplitude * Math.sin(x * .032 + phase)).toFixed(1);
+    back += command + x + ',' + (baseline - amplitude * 2 + amplitude * .8 * Math.sin(x * .026 - phase * .8 + 1.7)).toFixed(1);
+  }
+  const bottom = 'L392,400L50,400Z';
+  frontWave.setAttribute('d', front + bottom);
+  backWave.setAttribute('d', back + bottom);
+}
+
+function updateTomato() {
+  cancelAnimationFrame(waveFrame);
+  const target = Number(pinned || hovering);
+  tomato.classList.toggle('is-ripening', target === 1);
+  if (reducedMotion.matches || level === target) {
+    level = target;
+    drawTomato(level, 0);
+    return;
+  }
+
+  const origin = level;
+  const start = performance.now();
+  const duration = (target ? 2650 : 850) * Math.abs(target - origin);
+  function animate(now) {
+    const progress = Math.max(0, Math.min(1, (now - start) / duration));
+    const eased = progress * progress * (3 - 2 * progress);
+    level = origin + (target - origin) * eased;
+    drawTomato(level, (now - start) / 145);
+    if (progress < 1) waveFrame = requestAnimationFrame(animate);
+  }
+  waveFrame = requestAnimationFrame(animate);
+}
+
+tomato.addEventListener('pointerenter', event => {
+  if (event.pointerType === 'touch') return;
+  hovering = true;
+  updateTomato();
+});
+tomato.addEventListener('pointerleave', () => {
+  hovering = false;
+  updateTomato();
+});
+tomato.addEventListener('click', () => {
+  pinned = !pinned;
+  tomato.setAttribute('aria-pressed', String(pinned));
+  updateTomato();
+});
+reducedMotion.addEventListener('change', updateTomato);

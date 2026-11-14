@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4f7fe64"><script src="app.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=galeria-interactiva"><script src="app.js?v=galeria-interactiva" defer></script>
 </head>
 <body>
 <svg class="svg-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><symbol id="arrow" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol><symbol id="down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6"/></symbol><symbol id="code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></symbol><symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></symbol><symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol><symbol id="pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol></svg>
@@ -54,9 +54,11 @@
         </div>
       </article>
       <article class="project mini-project project-pawket" id="pawket">
-        <div class="project-media pawket-cover">
-          <img src="assets/pawket-logui.svg" alt="Logui, el beagle cocinero de Pawket" width="82" height="96" loading="lazy">
-        </div>
+        <button class="project-media pawket-cover" type="button" aria-label="Escuchar ladrar a Logui">
+          <img src="assets/pawket-logui.svg" alt="" width="82" height="96" loading="lazy">
+          <span class="sound-icon" aria-hidden="true">♫</span><span class="bark-label" aria-hidden="true">¡Guau!</span>
+        </button>
+        <!-- Ladrido de Broadbeer, dominio público: https://commons.wikimedia.org/wiki/File:George_vuf_1996.ogg -->
         <div class="project-copy">
           <p class="project-type">Web instalable · Sin conexión</p>
           <h3>Pawket</h3>
@@ -70,7 +72,9 @@
       </article>
       <article class="project mini-project project-aula" id="aula">
         <div class="project-media aula-cover" role="img" aria-label="Logotipo de Aula: un libro abierto y la palabra aula">
-          <div class="aula-lockup" aria-hidden="true"><img src="assets/aula-book.svg" alt="" width="64" height="64" loading="lazy"><span>aula<b>.</b></span></div>
+          <div class="aula-lockup" aria-hidden="true"><span class="aula-book"><img src="assets/aula-book.svg" alt="" width="64" height="64" loading="lazy">
+              <svg viewBox="0 0 64 64"><path d="M32 23c3-4 8-5 15-5a2 2 0 0 1 2 2v24a2 2 0 0 1-2 2c-7 0-12 0-15 3z"/></svg>
+            </span><span>aula<b>.</b></span></div>
         </div>
         <div class="project-copy">
           <p class="project-type">Organización académica · Web</p>
@@ -84,9 +88,33 @@
         </div>
       </article>
       <article class="project mini-project project-pomodoro-infusion" id="pomodoro-infusion">
-        <div class="project-media tomato-cover">
-          <img src="assets/pomodoro-tomate.svg" alt="Ilustración de un tomate rojo con trama de impresión vintage" width="315" height="299" loading="lazy">
-        </div>
+        <button type="button" class="project-media tomato-cover" aria-label="Cambiar la maduración del tomate" aria-pressed="false">
+          <svg class="tomato-art" viewBox="63 79 315 299" aria-hidden="true">
+            <defs>
+              <path id="gallery-fruit" d="M220.0,125.2 224.8,125.1 229.7,124.8 234.5,124.3 239.2,123.7 243.9,123.0 248.6,122.4 253.1,122.0 257.6,121.8 262.0,121.9 266.4,122.4 270.6,123.1 274.8,124.2 278.9,125.5 282.9,127.1 286.8,128.9 290.7,130.8 294.5,132.9 298.2,135.0 301.9,137.3 305.6,139.6 309.2,141.9 312.8,144.3 316.3,146.8 319.8,149.3 323.3,151.8 326.8,154.5 330.1,157.1 333.5,159.9 336.8,162.7 340.0,165.6 343.1,168.6 346.1,171.7 349.0,174.9 351.7,178.2 354.4,181.6 356.8,185.0 359.1,188.6 361.3,192.3 363.2,196.0 364.9,199.8 366.5,203.7 367.8,207.6 368.9,211.6 369.8,215.6 370.5,219.7 371.0,223.7 371.2,227.8 371.3,231.9 371.3,235.9 371.0,240.0 370.6,244.0 370.1,248.1 369.4,252.0 368.5,256.0 367.6,260.0 366.6,263.9 365.5,267.7 364.2,271.6 362.9,275.4 361.5,279.2 360.0,283.0 358.5,286.8 356.8,290.5 355.1,294.2 353.2,297.9 351.3,301.6 349.2,305.2 347.0,308.7 344.7,312.2 342.2,315.7 339.7,319.1 336.9,322.3 334.0,325.5 331.0,328.6 327.8,331.6 324.5,334.4 321.0,337.0 317.3,339.5 313.5,341.8 309.6,344.0 305.6,346.0 301.5,347.7 297.2,349.3 292.9,350.7 288.5,351.9 284.0,353.0 279.5,353.9 275.0,354.6 270.4,355.2 265.8,355.7 261.2,356.0 256.6,356.3 252.0,356.5 247.4,356.7 242.9,356.8 238.3,356.9 233.7,357.0 229.1,357.0 224.6,357.1 220.0,357.2 215.4,357.3 210.8,357.3 206.2,357.4 201.6,357.5 197.0,357.6 192.4,357.6 187.7,357.6 183.0,357.5 178.3,357.3 173.7,357.0 169.0,356.6 164.3,356.1 159.7,355.4 155.1,354.5 150.6,353.5 146.1,352.2 141.7,350.8 137.5,349.2 133.3,347.4 129.2,345.3 125.3,343.1 121.5,340.7 117.9,338.1 114.5,335.3 111.2,332.4 108.1,329.4 105.1,326.2 102.3,322.9 99.7,319.5 97.3,316.0 94.9,312.5 92.8,308.8 90.8,305.2 88.9,301.5 87.1,297.8 85.4,294.0 83.8,290.3 82.3,286.5 80.9,282.7 79.6,278.9 78.4,275.1 77.2,271.3 76.1,267.4 75.1,263.6 74.2,259.7 73.3,255.8 72.6,251.9 71.9,247.9 71.4,244.0 71.0,240.0 70.8,236.0 70.6,232.0 70.7,228.0 70.9,223.9 71.3,219.9 71.9,215.9 72.7,211.9 73.7,207.9 74.8,204.0 76.2,200.1 77.8,196.3 79.5,192.5 81.5,188.8 83.6,185.2 85.9,181.7 88.4,178.2 91.0,174.9 93.7,171.6 96.6,168.4 99.5,165.3 102.6,162.3 105.8,159.4 109.0,156.5 112.3,153.7 115.7,151.0 119.1,148.3 122.6,145.7 126.1,143.2 129.7,140.7 133.3,138.2 137.0,135.9 140.7,133.6 144.5,131.4 148.4,129.3 152.3,127.3 156.3,125.6 160.4,124.0 164.6,122.7 168.8,121.7 173.1,121.0 177.5,120.7 182.0,120.7 186.6,121.0 191.2,121.5 195.9,122.2 200.7,123.0 205.5,123.8 210.3,124.5 215.1,125.0 220.0,125.2Z"/>
+              <path id="gallery-leaf" d="M0,-4 C10,-13 30,-14 46,-3 C50,0 54,4 58,9 C48,6 40,7 30,8 C18,9 8,8 0,4 Z"/>
+              <clipPath id="gallery-tomato-clip"><use href="#gallery-fruit"/></clipPath>
+              <pattern id="gallery-tomato-ink" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(27)"><circle cx="3.5" cy="3.5" r="1.7" fill="#351d16"/></pattern>
+            </defs>
+            <use href="#gallery-fruit" transform="translate(4 5)" fill="#241612"/>
+            <g clip-path="url(#gallery-tomato-clip)">
+              <use href="#gallery-fruit" fill="#8fb656"/>
+              <path class="tomato-wave-back" fill="#f4923a"/>
+              <path class="tomato-wave-front" fill="#e2382a"/>
+              <path d="M72 288c88 63 220 53 298-79v162H72z" fill="#301b15" opacity=".16"/>
+              <path d="M70 317c99 48 219 17 300-77v137H70z" fill="url(#gallery-tomato-ink)" opacity=".56"/>
+              <path d="M122 196c1-26 26-51 56-57 9-2 12 8 4 12-25 8-40 22-48 47-3 8-12 6-12-2z" fill="#fff0bb"/>
+              <circle cx="192" cy="137" r="4" fill="#fff0bb"/>
+              <g class="tomato-drop" style="--drop-delay:140ms"><path transform="translate(262 170)" d="M0-6.5C2.6-2.4 4.2.6 4.2 2.8a4.2 4.2 0 0 1-8.4 0C-4.2.6-2.6-2.4 0-6.5Z"/></g><g class="tomato-drop" style="--drop-delay:720ms"><path transform="translate(306 236)" d="M0-6.5C2.6-2.4 4.2.6 4.2 2.8a4.2 4.2 0 0 1-8.4 0C-4.2.6-2.6-2.4 0-6.5Z"/></g><g class="tomato-drop" style="--drop-delay:1000ms"><path transform="translate(176 300)" d="M0-6.5C2.6-2.4 4.2.6 4.2 2.8a4.2 4.2 0 0 1-8.4 0C-4.2.6-2.6-2.4 0-6.5Z"/></g><g class="tomato-drop" style="--drop-delay:1510ms"><path transform="translate(148 236)" d="M0-6.5C2.6-2.4 4.2.6 4.2 2.8a4.2 4.2 0 0 1-8.4 0C-4.2.6-2.6-2.4 0-6.5Z"/></g>
+            </g>
+            <use href="#gallery-fruit" fill="none" stroke="#f5d9a4" stroke-width="2.5"/>
+            <g class="tomato-calyx" fill="#537744" stroke="#29432d" stroke-width="2.4">
+              <path d="M215,129 C213,112 217,99 228,89 C231,86.5 235.5,90 233,94 C225,102 223,114 225,129 Z"/>
+              <g transform="translate(220 128) scale(1 .65)"><use href="#gallery-leaf" transform="rotate(-172) scale(0.85)"/><use href="#gallery-leaf" transform="rotate(-128) scale(0.8)"/><use href="#gallery-leaf" transform="rotate(-52) scale(0.8)"/><use href="#gallery-leaf" transform="rotate(-8) scale(0.92)"/><use href="#gallery-leaf" transform="rotate(38) scale(0.72)"/><use href="#gallery-leaf" transform="rotate(142) scale(0.72)"/><use href="#gallery-leaf" transform="rotate(96) scale(0.62)"/></g>
+              <ellipse cx="220" cy="128" rx="7" ry="4.5" fill="#799557"/>
+            </g>
+          </svg>
+        </button>
         <div class="project-copy">
           <p class="project-type">Temporizador · Web</p>
           <h3>Pomodoro Infusion</h3>
@@ -107,6 +135,7 @@
             <path d="m111 70 84 62 118-53" stroke="#f8f8e8" stroke-width="9"/>
             <path d="m111 70 84 62 118-53" stroke="#426954" stroke-width="4" stroke-dasharray="7 6"/>
             <g fill="#294f3d" stroke="#f9fbf4" stroke-width="3"><circle cx="111" cy="70" r="10"/><circle cx="195" cy="132" r="10"/><circle cx="313" cy="79" r="10"/></g>
+            <circle class="map-runner" r="5" fill="#daed9c" stroke="#294f3d" stroke-width="2"/>
           </svg>
         </div>
         <div class="project-copy">

@@ -123,16 +123,9 @@
 }
 
 @media (min-width: 851px) {
-  .project-grid {
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
-
-  .project-grid .project { grid-column: span 4; }
-  .project-grid .project-magical-athlete { grid-column: span 5; }
-  .project-grid .project-pawket { grid-column: span 4; }
-  .project-grid .project-aula { grid-column: span 3; }
-  .project-grid .project-pomodoro-infusion { grid-column: 3 / span 4; }
-  .project-grid .project-tycgis { grid-column: span 5; }
+  .project-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .project-grid .project { grid-column: span 2; }
+  .project-grid .project-pomodoro-infusion { grid-column: 2 / span 2; }
 }
 
 .project-media {
@@ -254,7 +247,7 @@
   box-shadow: 0 0 0 4px #ad754a28;
 }
 
-.tomato-cover img {
+.tomato-cover .tomato-art {
   position: absolute;
   width: auto;
   height: 77%;
@@ -363,7 +356,7 @@
   .tomato-cover::before { width: 75%; height: auto; }
 
   .pawket-cover img { width: 70%; height: auto; }
-  .tomato-cover img { width: 86%; height: auto; }
+  .tomato-cover .tomato-art { width: 86%; height: auto; }
 
   .aula-lockup {
     flex-direction: column;
@@ -377,4 +370,140 @@
   .project-grid .project-copy { padding: 12px 11px 4px; }
   .project-grid .project-links { gap: 0 10px; }
   .project-grid .project-copy > p:not(.project-type) { font-size: 13px; }
+}
+
+.light-content {
+  position: relative;
+  isolation: isolate;
+}
+
+.gallery-glow {
+  --glow-x: 50%;
+  --glow-y: 20%;
+  position: absolute;
+  inset: 0 0 auto;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  max-height: 68rem;
+  background:
+    radial-gradient(ellipse at var(--glow-x) var(--glow-y), #c6d69d55, transparent 60%),
+    radial-gradient(ellipse at 90% 20%, #eacfb53f, transparent 52%),
+    radial-gradient(#61745236 .7px, transparent .9px) 0 0 / 18px 18px;
+  mask-image: linear-gradient(#000 64%, transparent);
+}
+
+button.project-media {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid #20292714;
+}
+
+button.project-media:focus-visible { outline-offset: -5px; }
+
+.sound-icon, .bark-label {
+  position: absolute;
+  right: 12px;
+  background: #fff7de;
+  color: #513124;
+  border: 1px solid #a96f4d80;
+  font-weight: 700;
+}
+
+.sound-icon {
+  display: grid;
+  place-items: center;
+  bottom: 10px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-size: 15px;
+}
+
+.bark-label {
+  top: 12px;
+  opacity: 0;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.pawket-cover.is-barking .bark-label { opacity: 1; }
+
+.aula-book { position: relative; flex: none; }
+.aula-book svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.aula-book svg path {
+  fill: #f0f6e8;
+  stroke: #fff;
+  stroke-width: 2;
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
+
+.tomato-drop { opacity: 0; fill: #fff7ea; stroke: none; }
+.tomato-art { overflow: visible; stroke: none; }
+
+.map-runner {
+  opacity: 0;
+  offset-path: path("M111 70 195 132 313 79");
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pawket-cover.is-barking img { animation: chef-bark .35s ease both; }
+  .project-aula:is(:hover, :focus-within) .aula-book svg path {
+    animation: gallery-pages .72s steps(6) both;
+  }
+  .tomato-cover.is-ripening .tomato-drop {
+    animation: gallery-drip 1.45s var(--drop-delay) ease-in both;
+  }
+  .tomato-cover.is-ripening .tomato-calyx {
+    transform-origin: 220px 128px;
+    animation: gallery-sway 1.4s ease-in-out alternate 2;
+  }
+  .project-tycgis:is(:hover, :focus-within) .map-runner {
+    animation: gallery-route 1.35s ease-in-out both;
+  }
+
+  @keyframes chef-bark {
+    28% { transform: translateY(-13%) rotate(-10deg) scale(1.035); }
+    62% { transform: translateY(0) rotate(-3deg); }
+  }
+
+  @keyframes gallery-pages {
+    0%, 100% { opacity: 0; }
+    12%, 85% { opacity: 1; }
+    0%, 33.3%, 66.6% { transform: perspective(85px) rotateY(10deg); }
+    30%, 63%, 100% { transform: perspective(85px) rotateY(-168deg); }
+  }
+
+  @keyframes gallery-drip {
+    0%, 100% { opacity: 0; }
+    25% { opacity: .82; transform: translateY(0); }
+    75% { opacity: .42; }
+    100% { transform: translateY(32px); }
+  }
+
+  @keyframes gallery-sway {
+    50% { transform: rotate(3deg); }
+    100% { transform: rotate(-2deg); }
+  }
+
+  @keyframes gallery-route {
+    0% { opacity: 0; offset-distance: 0%; }
+    12%, 86% { opacity: 1; }
+    100% { opacity: 0; offset-distance: 100%; }
+  }
+}
+
+@media (max-width: 510px) {
+  button.project-media { border-right: 1px solid #20292714; border-bottom: 0; }
+  .sound-icon, .bark-label { right: 7px; }
 }
